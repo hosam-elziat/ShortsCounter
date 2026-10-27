@@ -560,7 +560,7 @@ fun DashboardContent(
                         modifier = Modifier.size(170.dp)
                     ) {
                         CircularProgressIndicator(
-                            progress = { progress },
+                            progress = progress,
                             modifier = Modifier.size(170.dp),
                             strokeWidth = 14.dp,
                             color = if (todayCount >= dailyGoal) Color(0xFFFF3B30) else Color(0xFF00F2FE),

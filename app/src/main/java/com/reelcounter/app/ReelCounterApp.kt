@@ -4,6 +4,7 @@ import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
+import com.reelcounter.app.R
 import com.reelcounter.app.data.AppDatabase
 
 class ReelCounterApp : Application() {
