@@ -1,39 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.shortscounter.app">
+    package="com.reelcounter.app">
 
-    <!-- الصلاحيات الأساسية المطلوبة -->
-    <!-- صلاحية ظهور الأيقونة العائمة فوق التطبيقات الأخرى -->
+    <!-- الصلاحيات الأساسية المطلوبة لمراقبة وعرض العداد -->
+    <!-- 1. ظهور أيقونة نظارة الـ VR العائمة فوق كل التطبيقات -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
-    <!-- صلاحية خدمة الخلفية لضمان استمرار عمل العداد -->
+    <!-- 2. خدمة إمكانية الوصول لرصد تمرير الفيديوهات (Accessibility Service) -->
+    <!-- تُمنح عبر BIND_ACCESSIBILITY_SERVICE في وسم الخدمة بالأسفل -->
+
+    <!-- 3. الوصول لإحصائيات استخدام التطبيقات لمعرفة التطبيق النشط -->
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+
+    <!-- 4. خدمة العمل في الخلفية لضمان عدم توقف العداد -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
 
-    <!-- صلاحية الإشعارات لنظام أندرويد 13 فما فوق -->
+    <!-- 5. إشعارات أندرويد 13 فما فوق -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
-    <!-- صلاحية الاهتزاز عند تجاوز الحد اليومي للمشاهدة -->
+    <!-- 6. استثناء تحسين البطارية لمنع النظام من قتل الخدمة في الخلفية -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!-- 7. الاهتزاز عند بلوغ الهدف اليومي -->
     <uses-permission android:name="android.permission.VIBRATE" />
 
-    <!-- صلاحية إعادة تشغيل الودجت العائم تلقائياً بعد إعادة تشغيل الهاتف -->
+    <!-- 8. تشغيل الودجت العائم تلقائياً بعد إعادة تشغيل الهاتف -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
+        android:name=".ReelCounterApp"
         android:allowBackup="true"
-        android:icon="@android:drawable/sym_def_app_icon"
+        android:icon="@drawable/ic_vr_glasses"
         android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_vr_glasses"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ShortsCounter"
+        android:theme="@style/Theme.ReelCounter"
         tools:targetApi="34">
 
         <!-- الشاشة الرئيسية للتطبيق مبنية بـ Jetpack Compose -->
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.ShortsCounter"
+            android:theme="@style/Theme.ReelCounter"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,9 +54,9 @@
             </intent-filter>
         </activity>
 
-        <!-- خدمة إمكانية الوصول Accessibility Service لرصد السكرول في تطبيقات الفيديوهات القصيرة -->
+        <!-- خدمة إمكانية الوصول: مراقبة تيك توك وريلز وشورتس وسناب شات -->
         <service
-            android:name=".services.ShortsAccessibilityService"
+            android:name=".services.ReelAccessibilityService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
             android:exported="true">
             <intent-filter>
@@ -54,15 +67,15 @@
                 android:resource="@xml/accessibility_service_config" />
         </service>
 
-        <!-- خدمة الأيقونة العائمة Floating Overlay Service -->
+        <!-- خدمة الأيقونة العائمة بنظارة الـ VR والعداد المباشر -->
         <service
-            android:name=".services.FloatingWidgetService"
+            android:name=".services.FloatingVRGogglesService"
             android:enabled="true"
             android:exported="false"
             android:foregroundServiceType="specialUse">
             <property
                 android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
-                android:value="Live floating video counter overlay over social media apps" />
+                android:value="Live floating VR headset video counter overlay over social feeds" />
         </service>
 
         <!-- مستقبل إعادة تشغيل الجهاز لتنشيط الودجت تلقائياً -->

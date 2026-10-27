@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_floating_vr_root"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/bg_floating_vr_pill"
+    android:paddingStart="10dp"
+    android:paddingEnd="14dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
+    android:elevation="14dp">
+
+    <!-- أيقونة نظارة الواقع الافتراضي VR -->
+    <ImageView
+        android:id="@+id/iv_vr_headset_icon"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:src="@drawable/ic_vr_glasses"
+        android:contentDescription="VR Headset" />
+
+    <!-- شارة العداد المباشر -->
+    <TextView
+        android:id="@+id/tv_vr_live_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="0"
+        android:textColor="#00F2FE"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-black" />
+
+</LinearLayout>

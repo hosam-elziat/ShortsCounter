@@ -1,13 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ShortsCounter</string>
-    <string name="accessibility_service_description">Monitors short video reels (TikTok, Instagram Reels, YouTube Shorts, etc.) to count transitions and track screen time.</string>
-    <string name="today_shorts_watched">"Today's Shorts Watched"</string>
+    <string name="app_name">ReelCounter</string>
+    <string name="accessibility_service_description">Monitors short video feeds (TikTok, Instagram Reels, YouTube Shorts, etc.) to count transitions and track screen time.</string>
+    <string name="notification_channel_name">ReelCounter Live Widget</string>
+    <string name="notification_channel_desc">Shows live floating VR headset counter over video apps</string>
+    <string name="today_shorts_watched">Today Videos Watched</string>
     <string name="video_unit">videos</string>
     <string name="minute_unit">min</string>
     <string name="time_spent">Time Spent</string>
     <string name="daily_limit_goal">Daily Limit</string>
-    <string name="floating_vr_widget_title">Floating VR Widget</string>
-    <string name="floating_widget_desc">Always-on overlay showing live video counter</string>
+    <string name="floating_vr_widget_title">Floating VR Goggles</string>
+    <string name="floating_widget_desc">Always-on futuristic VR headset overlay showing live counter</string>
     <string name="apps_breakdown_title">Apps Breakdown</string>
-    <string name="reset_today_confirmation">"Reset today's count to 0?"</string>
+    <string name="reset_today_confirmation">Reset today count to 0?</string>
 </resources>
