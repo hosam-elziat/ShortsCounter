@@ -139,4 +139,18 @@ object PermissionHelper {
             context.startActivity(intent)
         }
     }
+
+    /**
+     * 5. التحقق من صلاحية الإشعارات (أندرويد 13 فما فوق)
+     */
+    fun hasNotificationPermission(context: Context): Boolean {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            androidx.core.content.ContextCompat.checkSelfPermission(
+                context,
+                android.Manifest.permission.POST_NOTIFICATIONS
+            ) == android.content.pm.PackageManager.PERMISSION_GRANTED
+        } else {
+            true
+        }
+    }
 }

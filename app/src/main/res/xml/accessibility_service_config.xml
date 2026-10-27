@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
     android:description="@string/accessibility_service_description"
-    android:packageNames="com.zhiliaoapp.musically,com.ss.android.ugc.trill,com.instagram.android,com.google.android.youtube,com.facebook.katana,com.facebook.lite,com.snapchat.android"
-    android:accessibilityEventTypes="typeViewScrolled|typeWindowContentChanged|typeWindowStateChanged|typeViewSelected"
+    android:accessibilityEventTypes="typeViewScrolled|typeWindowContentChanged|typeWindowStateChanged|typeViewSelected|typeViewFocused"
     android:accessibilityFlags="flagDefault|flagRetrieveInteractiveWindows|flagReportViewIds|flagIncludeNotImportantViews"
     android:accessibilityFeedbackType="feedbackGeneric"
-    android:notificationTimeout="80"
+    android:notificationTimeout="50"
     android:canRetrieveWindowContent="true"
     android:settingsActivity="com.reelcounter.app.ui.MainActivity" />
