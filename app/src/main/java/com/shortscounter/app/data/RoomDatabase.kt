@@ -25,8 +25,8 @@ data class VideoRecordEntity(
 )
 
 data class AppCountResult(
-    val app_name: String,
-    val package_name: String,
+    @ColumnInfo(name = "app_name") val appName: String,
+    @ColumnInfo(name = "package_name") val packageName: String,
     val count: Int
 )
 
