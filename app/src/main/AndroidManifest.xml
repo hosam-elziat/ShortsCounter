@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.shortscounter.app">
+
+    <!-- الصلاحيات الأساسية المطلوبة -->
+    <!-- صلاحية ظهور الأيقونة العائمة فوق التطبيقات الأخرى -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- صلاحية خدمة الخلفية لضمان استمرار عمل العداد -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <!-- صلاحية الإشعارات لنظام أندرويد 13 فما فوق -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- صلاحية الاهتزاز عند تجاوز الحد اليومي للمشاهدة -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- صلاحية إعادة تشغيل الودجت العائم تلقائياً بعد إعادة تشغيل الهاتف -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@android:drawable/sym_def_app_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ShortsCounter"
+        tools:targetApi="34">
+
+        <!-- الشاشة الرئيسية للتطبيق مبنية بـ Jetpack Compose -->
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ShortsCounter"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- خدمة إمكانية الوصول Accessibility Service لرصد السكرول في تطبيقات الفيديوهات القصيرة -->
+        <service
+            android:name=".services.ShortsAccessibilityService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+        <!-- خدمة الأيقونة العائمة Floating Overlay Service -->
+        <service
+            android:name=".services.FloatingWidgetService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Live floating video counter overlay over social media apps" />
+        </service>
+
+        <!-- مستقبل إعادة تشغيل الجهاز لتنشيط الودجت تلقائياً -->
+        <receiver
+            android:name=".receivers.BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

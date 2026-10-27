@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">عداد الفيديوهات الذكي</string>
+    <string name="accessibility_service_description">تراقب الخدمة مقاطع الفيديو القصيرة (تيك توك، إنستجرام ريلز، يوتيوب شورتس، إلخ) لحساب عدد المشاهدات والوقت المستغرق.</string>
+    <string name="today_shorts_watched">فيديوهات اليوم التي شاهدتها</string>
+    <string name="video_unit">فيديو</string>
+    <string name="minute_unit">دقيقة</string>
+    <string name="time_spent">الوقت المستغرق</string>
+    <string name="daily_limit_goal">الحد اليومي</string>
+    <string name="floating_vr_widget_title">الأيقونة العائمة الذكية (VR)</string>
+    <string name="floating_widget_desc">أيقونة أنيقة عائمة تظهر العداد المباشر فوق كل التطبيقات</string>
+    <string name="apps_breakdown_title">توزيع المشاهدات حسب التطبيقات</string>
+    <string name="reset_today_confirmation">هل تريد تصفير عداد اليوم؟</string>
+</resources>
